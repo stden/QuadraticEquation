@@ -35,4 +35,12 @@ public class QuadraticEquationTest extends Assert {
             assertArrayEquals("t(x-q)^2 = t*x^2 - 2*t*q*x + t*q^2", new double[]{q}, QuadraticEquation.solve(t, -2 * t * q, t * q * q), EPS);
         }
     }
+
+    /**
+     * Нет решений (корней)
+     */
+    @Test
+    public void testNoRoots() {
+        assertArrayEquals("x^2 + 2 = 0", new double[]{}, QuadraticEquation.solve(1, 0, 2), EPS);
+    }
 }

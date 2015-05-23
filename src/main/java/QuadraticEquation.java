@@ -17,6 +17,8 @@ public class QuadraticEquation {
         double D = Math.pow(b, 2) - 4 * a * c;
         if (Math.abs(D) < EPS)
             return new double[]{-b / (2 * a)};
+        if (D < 0)
+            return new double[]{};
         double d = Math.sqrt(D);
         return new double[]{(-b - d) / (2 * a), (-b + d) / (2 * a)};
     }
