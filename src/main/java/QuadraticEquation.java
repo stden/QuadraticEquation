@@ -13,6 +13,9 @@ public class QuadraticEquation {
      * @return корни уравнения (значения x)
      */
     public static double[] solve(double a, double b, double c) {
+        if (Math.abs(a) < EPS) {
+            return new double[]{-c / b};
+        }
         // Дискриминант
         double D = Math.pow(b, 2) - 4 * a * c;
         if (Math.abs(D) < EPS)

@@ -43,4 +43,13 @@ public class QuadraticEquationTest extends Assert {
     public void testNoRoots() {
         assertArrayEquals("x^2 + 2 = 0", new double[]{}, QuadraticEquation.solve(1, 0, 2), EPS);
     }
+
+    /**
+     * Линейное уравнение
+     */
+    @Test
+    public void testLinear() {
+        assertArrayEquals("3x + 4 = 0", new double[]{-4 / 3.}, QuadraticEquation.solve(0, 3, 4), EPS);
+        assertArrayEquals("1e-16*x^2 + x - 100 = 0", new double[]{100}, QuadraticEquation.solve(1e-16, 1, -100), EPS);
+    }
 }
