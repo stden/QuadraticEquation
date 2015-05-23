@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Квадратное уравнение
  */
@@ -29,5 +31,37 @@ public class QuadraticEquation {
             return new double[]{};
         double d = Math.sqrt(D);
         return new double[]{(-b - d) / (2 * a), (-b + d) / (2 * a)};
+    }
+
+    /**
+     * Ввод коэффициентов с консоли или из командной строки
+     *
+     * @param args Аргументы командной строки, например: java QuadraticEquation 1.0 -2.0 1.0
+     */
+    public static void main(String[] args) {
+        double a, b, c;
+        if (args.length == 3) {
+            a = Double.parseDouble(args[0]);
+            b = Double.parseDouble(args[1]);
+            c = Double.parseDouble(args[2]);
+        } else {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Введите a: ");
+            a = scanner.nextDouble();
+            System.out.print("Введите b: ");
+            b = scanner.nextDouble();
+            System.out.print("Введите c: ");
+            c = scanner.nextDouble();
+        }
+        System.out.printf("%s x^2 + %s x + %s = 0%n", a, b, c);
+        try {
+            double roots[] = solve(a, b, c);
+            System.out.println("Количество решений = " + roots.length);
+            for (double x : roots) {
+                System.out.println("x = " + x + " -> " + (a * x * x + b * x + c));
+            }
+        } catch (AnyXException ex) {
+            System.out.println("Вырожденное уравнение: x - любое");
+        }
     }
 }
