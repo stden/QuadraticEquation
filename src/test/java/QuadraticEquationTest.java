@@ -62,4 +62,12 @@ public class QuadraticEquationTest extends Assert {
         assertArrayEquals("4.5 = 0", new double[]{}, QuadraticEquation.solve(0, 0, 4.5), EPS);
     }
 
+    /**
+     * a = 0, b = 0, c = 0, x - любое (бесконечное число решений)
+     * Это не возможно выразить с помощью массива double => генерируем исключение
+     */
+    @Test(expected = AnyXException.class)
+    public void testABСZero() {
+        QuadraticEquation.solve(0, 0, 0);
+    }
 }

@@ -14,8 +14,11 @@ public class QuadraticEquation {
      */
     public static double[] solve(double a, double b, double c) {
         if (Math.abs(a) < EPS) {
-            if (Math.abs(b) < EPS)
+            if (Math.abs(b) < EPS) {
+                if (Math.abs(c) < EPS)
+                    throw new AnyXException();
                 return new double[]{};
+            }
             return new double[]{-c / b};
         }
         // Дискриминант
