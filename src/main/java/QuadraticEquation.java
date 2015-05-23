@@ -2,6 +2,7 @@
  * Квадратное уравнение
  */
 public class QuadraticEquation {
+    public static final double EPS = 1e-10;
 
     /**
      * Решение квадратного уравнения: ax^2 + bx + c = 0
@@ -14,7 +15,7 @@ public class QuadraticEquation {
     public static double[] solve(double a, double b, double c) {
         // Дискриминант
         double D = Math.pow(b, 2) - 4 * a * c;
-        if (D == 0)
+        if (Math.abs(D) < EPS)
             return new double[]{-b / (2 * a)};
         double d = Math.sqrt(D);
         return new double[]{(-b - d) / (2 * a), (-b + d) / (2 * a)};

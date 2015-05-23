@@ -24,4 +24,15 @@ public class QuadraticEquationTest extends Assert {
     public void testTwoSolutions() {
         assertArrayEquals("(x-1)(x-2) = x^2-3x+2", new double[]{1, 2}, QuadraticEquation.solve(1, -3, 2), EPS);
     }
+
+    /**
+     * Погрешность вычислений (точность вычисления дискриминанта)
+     */
+    @Test
+    public void testOneRootAccuracy() {
+        for (int q = 1; q < 999; q++) {
+            double t = 0.3;
+            assertArrayEquals("t(x-q)^2 = t*x^2 - 2*t*q*x + t*q^2", new double[]{q}, QuadraticEquation.solve(t, -2 * t * q, t * q * q), EPS);
+        }
+    }
 }
