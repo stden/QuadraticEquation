@@ -52,4 +52,14 @@ public class QuadraticEquationTest extends Assert {
         assertArrayEquals("3x + 4 = 0", new double[]{-4 / 3.}, QuadraticEquation.solve(0, 3, 4), EPS);
         assertArrayEquals("1e-16*x^2 + x - 100 = 0", new double[]{100}, QuadraticEquation.solve(1e-16, 1, -100), EPS);
     }
+
+    /**
+     * a = 0, b = 0, c != 0 - нет решений
+     */
+    @Test
+    public void testABZeroNoRoots() {
+        assertArrayEquals("2 = 0", new double[]{}, QuadraticEquation.solve(0, 0, 2), EPS);
+        assertArrayEquals("4.5 = 0", new double[]{}, QuadraticEquation.solve(0, 0, 4.5), EPS);
+    }
+
 }
