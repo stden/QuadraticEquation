@@ -85,7 +85,8 @@ public class QuadraticEquationTest extends Assert {
             double[] roots = QuadraticEquation.solve(a, b, c);
             stats[roots.length]++;
             for (double x : roots) {
-                assertEquals(0.0, a * Math.pow(x, 2) + b * x + c, 1e-6);
+                assertEquals(a + " x^2 + " + b + " x + " + c + " = 0",
+                        0.0, a * Math.pow(x, 2) + b * x + c, 1e-8);
             }
         }
         System.out.println("Нет решений: " + stats[0]);
