@@ -16,4 +16,12 @@ public class QuadraticEquationTest extends Assert {
         assertArrayEquals("(x-1)^2 = x^2-2x+1", new double[]{1}, QuadraticEquation.solve(1, -2, 1), EPS);
         assertArrayEquals("2(x-1)^2 = 2x^2-4x+2", new double[]{1}, QuadraticEquation.solve(2, -4, 2), EPS);
     }
+
+    /**
+     * Уравнения с двумя корнями
+     */
+    @Test
+    public void testTwoSolutions() {
+        assertArrayEquals("(x-1)(x-2) = x^2-3x+2", new double[]{1, 2}, QuadraticEquation.solve(1, -3, 2), EPS);
+    }
 }
