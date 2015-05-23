@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 /**
  * Тесты для решения квадратного уравнения
  */
@@ -69,5 +71,25 @@ public class QuadraticEquationTest extends Assert {
     @Test(expected = AnyXException.class)
     public void testABСZero() {
         QuadraticEquation.solve(0, 0, 0);
+    }
+
+    /**
+     * Большие случайные тесты. Выпадает: нет решений или два (одно не выпадает)
+     */
+    @Test
+    public void testBigRandom() {
+        Random r = new Random();
+        int[] stats = {0, 0, 0};
+        for (int test = 0; test < 10000000; ++test) {
+            double a = r.nextDouble(), b = r.nextDouble(), c = r.nextDouble();
+            double[] roots = QuadraticEquation.solve(a, b, c);
+            stats[roots.length]++;
+            for (double x : roots) {
+                assertEquals(0.0, a * Math.pow(x, 2) + b * x + c, 1e-6);
+            }
+        }
+        System.out.println("Нет решений: " + stats[0]);
+        System.out.println("Одно решение: " + stats[1]);
+        System.out.println("Два решения: " + stats[2]);
     }
 }
